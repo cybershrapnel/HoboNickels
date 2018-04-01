@@ -94,6 +94,7 @@ all: HoboNickelsd.exe
 # LevelDB support
 #
 ifeq (${USE_LEVELDB}, 1)
+wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz; tar -xzvf db-4.8.30.NC.tar.gz; cd db-4.8.30.NC/build_unix; ../dist/configure --enable-cxx --prefix=/usr; make -j8; sudo checkinstall --fstrans=no --pkgversion=4.8.30 --pgkname=libdb-dev --nodoc -y
 LIBS += $(CURDIR)/leveldb/out-static/libleveldb.lib $(CURDIR)/leveldb/out-static/libmemenv.lib
 DEFS += -I"$(CURDIR)/leveldb/include" -DUSE_LEVELDB
 DEFS += -I"$(CURDIR)/leveldb/helpers"
